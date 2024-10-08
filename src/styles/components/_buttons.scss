@@ -1,0 +1,226 @@
+@use '../config' as *;
+.si-btn {
+  gap: var(--gutter-space);
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  color: var(--neutral-1);
+  text-align: center;
+  margin: 0;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  @extend %si-regularFF-sec !optional;
+  @extend %flexbox !optional;
+  @extend %si-buttonReset !optional;
+  @include transition(
+    border 0.2s linear,
+    box-shadow 0.1s linear,
+    background-color 0.1s linear,
+    color 0.1s linear
+  );
+
+  &:not(
+      .si-btn__primary--link,
+      .si-btn__secondary--link,
+      .si-btn__link,
+      .si-btn__loadmore,
+      .si-btn__login
+    ) {
+    padding-left: calc(var(--gutter-space) * 10);
+    padding-right: calc(var(--gutter-space) * 10);
+    height: var(--cta-height);
+    border-radius: 24px 0;
+  }
+  .si-btn__primary--link,
+  .si-btn__secondary--link {
+    margin: 0;
+  }
+  &--flexReverse {
+    flex-direction: row-reverse;
+  }
+  &__round {
+    @include border-radius(100px);
+  }
+  // span ~ i {
+  //   margin-left: 0.4rem;
+  // }
+
+  span {
+    text-transform: uppercase;
+    @include setProperty(font-size, 14);
+  }
+
+  i {
+    position: relative;
+    flex-shrink: 0;
+    font-family: 'afci' !important;
+    @include setProperty(width, 14);
+    @include setProperty(height, 14);
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      @extend %flexbox !optional;
+    }
+  }
+
+  &:disabled,
+  &.si-disabled {
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  &__primary {
+    border: 0 solid var(--cta-primary-stroke);
+    background: var(--cta-primary);
+    color: var(--cta-primary-text);
+    i {
+      color: var(--cta-primary-icon);
+    }
+    &:disabled,
+    &.si-disabled {
+      --cta-primary: hsla(34, 44%, 93%, 0.4);
+      --cta-primary-text: hsla(278, 100%, 11%, 0.4);
+      --cta-primary-icon: hsla(278, 100%, 11%, 0.4);
+      --cta-primary-stroke: hsla(34, 44%, 93%, 0.4);
+    }
+    &--outline {
+      --cta-primary: var(--transparent);
+      --cta-primary-text: hsla(46, 68%, 51%, 1);
+      --cta-primary-icon: hsla(46, 68%, 51%, 1);
+      --cta-primary-stroke: hsla(43, 74%, 42%, 1);
+      border-width: var(--border-1);
+      &:disabled,
+      &.si-disabled {
+        --cta-primary: transparent;
+        --cta-primary-text: hsla(34, 44%, 93%, 0.4);
+        --cta-primary-icon: hsla(34, 44%, 93%, 0.4);
+        --cta-primary-stroke: hsla(34, 44%, 93%, 0.4);
+      }
+    }
+
+    &--link {
+      --cta-primary-icon: hsla(49, 89%, 60%, 1);
+      padding: 0 !important;
+      border: none;
+      background: var(--transparent);
+      color: var(--cta-primary-text);
+      span {
+        --cta-primary-text: hsla(49, 89%, 60%, 1);
+        color: var(--cta-primary-text);
+        // border-bottom: var(--border-2) solid var(--cta-primary-stroke);
+      }
+      &:disabled,
+      &.si-disabled {
+        --cta-primary: transparent;
+        --cta-primary-text: hsla(34, 44%, 93%, 0.4);
+        --cta-primary-icon: hsla(34, 44%, 93%, 0.4);
+        --cta-primary-stroke: transparent;
+        span {
+          --cta-primary: transparent;
+          --cta-primary-text: hsla(34, 44%, 93%, 0.4);
+          --cta-primary-icon: hsla(34, 44%, 93%, 0.4);
+          --cta-primary-stroke: hsla(34, 44%, 93%, 0.4);
+        }
+      }
+    }
+  }
+  &__secondary {
+    border: var(--border-1) solid var(--cta-secondary-stroke);
+    background: var(--cta-secondary);
+    color: var(--cta-secondary-text);
+    i {
+      color: var(--cta-secondary-icon);
+    }
+    &:disabled,
+    &.si-disabled {
+      --cta-secondary: hsla(278, 100%, 11%, 0.4);
+      --cta-secondary-text: hsla(34, 44%, 93%, 0.4);
+      --cta-secondary-icon: hsla(34, 44%, 93%, 0.4);
+      --cta-secondary-stroke: hsla(34, 44%, 93%, 0.4);
+    }
+
+    &--outline {
+      --cta-secondary: transparent;
+      --cta-secondary-text: hsla(278, 100%, 11%, 1);
+      --cta-secondary-icon: hsla(278, 100%, 11%, 1);
+      --cta-secondary-stroke: hsla(278, 100%, 11%, 1);
+      &:disabled,
+      &.si-disabled {
+        --cta-secondary: transparent;
+        --cta-secondary-text: hsla(278, 100%, 11%, 0.4);
+        --cta-secondary-icon: hsla(278, 100%, 11%, 0.4);
+        --cta-secondary-stroke: hsla(278, 100%, 11%, 0.4);
+      }
+    }
+    &--link {
+      --cta-secondary-icon: hsla(278, 100%, 11%, 1);
+      padding: 0 !important;
+      border: none;
+      background: var(--transparent);
+      color: var(--cta-secondary-text);
+      span {
+        --cta-secondary-stroke: hsla(278, 100%, 11%, 1);
+        --cta-secondary-text: hsla(278, 100%, 11%, 1);
+        color: var(--cta-secondary-text);
+        border-bottom: var(--border-2) solid var(--cta-secondary-stroke);
+      }
+      &:disabled,
+      &.si-disabled {
+        --cta-secondary: transparent;
+        --cta-secondary-text: hsla(278, 100%, 11%, 0.4);
+        --cta-secondary-icon: hsla(278, 100%, 11%, 0.4);
+        --cta-secondary-stroke: hsla(278, 100%, 11%, 0.4);
+        span {
+          --cta-secondary: transparent;
+          --cta-secondary-text: hsla(278, 100%, 11%, 0.4);
+          --cta-secondary-icon: hsla(278, 100%, 11%, 0.4);
+          --cta-secondary-stroke: hsla(278, 100%, 11%, 0.4);
+        }
+      }
+    }
+  }
+  &__tertiary {
+    border: solid var(--cta-tertiary-stroke);
+    @include setProperty(border-width, 1);
+    background: var(--cta-tertiary);
+    color: var(--cta-tertiary-text);
+    i {
+      color: var(--cta-tertiary-icon);
+    }
+    &:hover,
+    &:active {
+      // border-color: var(--cta-secondary-hover);
+    }
+  }
+  &__link {
+    background: var(--cta-tertiary);
+    color: var(--cta-tertiary-text);
+    span {
+      display: inline-block;
+      padding-bottom: var(--half-space);
+      padding-top: var(--half-space);
+    }
+    &--icon {
+      background: var(--cta-tertiary-icon);
+    }
+  }
+
+  &__icon {
+    padding: 0 !important;
+    aspect-ratio: 1/1;
+    @include setProperty(font-size, 18);
+    height: var(--cta-height);
+  }
+  &__back {
+    color: var(--neutral-2);
+  }
+}

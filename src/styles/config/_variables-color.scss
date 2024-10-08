@@ -1,0 +1,146 @@
+:root {
+  --transparent: transparent;
+  --googlePlus: hsl(7, 71%, 55%);
+  --facebook: hsla(213, 100%, 50%, 1);
+  --twitter: hsla(0, 0%, 0%, 1);
+  --whatsApp: hsla(133, 100%, 32%, 1);
+  --instagram: hsla(0, 0%, 0%, 1);
+  --download: hsla(213, 5%, 39%, 1);
+
+  /* primary */
+  --primary-1: hsla(43, 74%, 42%, 1);
+  --primary-2: hsla(46, 68%, 51%, 1);
+  --primary-3: hsla(49, 89%, 60%, 1);
+  /* secondary */
+  --secondary-1: hsla(235, 100%, 12%, 1);
+  --secondary-2: hsla(16, 88%, 54%, 1);
+  --secondary-3: hsla(211, 100%, 50%, 1);
+  --secondary-4: hsla(40, 100%, 50%, 1);
+  /* neutral */
+  --neutral-1: hsl(0, 0%, 0%);
+  --neutral-2: hsl(0, 0%, 100%);
+  --neutral-3: hsla(30, 10%, 8%, 1);
+  --neutral-4: hsla(0, 0%, 54%, 1);
+  --neutral-5: hsla(0, 0%, 91%, 1);
+  --neutral-6: hsla(235, 100%, 12%, 1);
+  --neutral-7: hsla(49, 89%, 60%, 0.4);
+  --neutral-8: hsla(16, 88%, 54%, 0.4);
+  --neutral-9: hsla(0, 0%, 100%, 0.16);
+  --neutral-10: hsla(0, 0%, 0%, 0.16);
+  // background
+  --background-1: hsla(0, 0%, 100%, 1);
+  --background-2: hsla(0, 0%, 91%, 1);
+  --background-3: hsla(235, 100%, 12%, 1);
+  --background-4: hsla(46, 68%, 51%, 1);
+  --background-5: transparent;
+  /* gradient */
+  --gradient-1: linear-gradient(179.57deg, hsl(49, 89%, 60%) 0.37%, hsl(43, 74%, 42%) 99.63%);
+  --gradient-2: linear-gradient(180deg, hsl(211, 100%, 50%) 0%, hsl(235, 100%, 12%) 100%);
+  --gradient-3: linear-gradient(180deg, hsl(40, 100%, 50%) 0%, hsl(16, 88%, 54%) 100%);
+  --gradient-4: linear-gradient(360deg, hsl(30, 10%, 8%) -59%, hsl(0, 0%, 54%) 132.99%);
+  --gradient-5: transparent;
+  /* Trend */
+  --trend-up: hsla(108, 100%, 35%, 1);
+  --trend-down: hsla(0, 100%, 50%, 1);
+  --trend-same: hsla(336, 9%, 45%, 1);
+  /* accent */
+  --accent-error: hsla(360, 81%, 58%, 1);
+  --accent-success: hsla(145, 75%, 41%, 1);
+  --accent-warning: hsla(40, 100%, 48%, 1);
+  --accent-info: hsla(211, 100%, 50%, 1);
+  --accent-1: hsla(49, 89%, 60%, 1);
+
+  /* Tag */
+  --upcoming: hsla(247, 100%, 57%, 1);
+  --live: hsla(53, 100%, 50%, 1);
+  --completed: hsla(0, 0%, 96%, 1);
+  --result: hsla(0, 0%, 96%, 1);
+  --abandoned: hsla(0, 100%, 50%, 1);
+  --not-playing: hsla(29, 100%, 50%, 1);
+  --rank: hsla(247, 100%, 57%, 1);
+  --points: hsla(165, 100%, 44%, 1);
+
+  /* primary-cta */
+  --cta-primary: linear-gradient(179.57deg, hsl(49, 89%, 60%) 0.37%, hsl(43, 74%, 42%) 99.63%);
+  --cta-primary-text: hsla(30, 10%, 8%, 1);
+  --cta-primary-icon: hsla(30, 10%, 8%, 1);
+  --cta-primary-stroke: transparent;
+  --cta-primary-hover: transparent;
+  --cta-primary-active: transparent;
+  /* secondary-cta */
+  --cta-secondary: hsla(278, 100%, 11%, 1);
+  --cta-secondary-text: hsla(35, 40%, 78%, 1);
+  --cta-secondary-icon: hsla(35, 40%, 78%, 1);
+  --cta-secondary-stroke: hsla(35, 40%, 78%, 1);
+  --cta-secondary-hover: transparent;
+  --cta-secondary-active: transparent;
+  /* tertiary-cta */
+  --cta-tertiary: hsla(225, 100%, 19%, 1);
+  --cta-tertiary-text: hsla(0, 0%, 100%, 1);
+  --cta-tertiary-icon: hsla(0, 0%, 100%, 1);
+  --cta-tertiary-stroke: hsla(225, 100%, 19%, 1);
+  --cta-tertiary-hover: transparent;
+  --cta-tertiary-active: transparent;
+  /* overlay */
+  --overlay-fg: hsla(0, 0%, 0%, 0.5);
+  --overlay-bg: hsla(0, 0%, 100%, 1);
+  --overlay-title: hsla(30, 10%, 8%, 1);
+  --overlay-caption: hsla(0, 0%, 0%, 1);
+  --overlay-close: hsla(0, 0%, 0%, 1);
+  --overlay-bg-close: hsl(0, 0%, 100%);
+
+  /* navbar */
+  --nav-bg: hsla(38, 34%, 59%, 1);
+  --nav-text: hsla(0, 0%, 100%, 1);
+  --nav-active-stroke: hsla(0, 0%, 100%, 1);
+  --nav-active-bg: hsla(34, 44%, 93%, 1);
+  --nav-active-text: hsla(278, 100%, 11%, 1);
+
+  /* tab */
+  --tab-bg: hsla(0, 0%, 91%, 1);
+  --tab-text: hsla(30, 10%, 8%, 1);
+  --tab-border: hsla(0, 0%, 54%, 1);
+  --tab-active-bg: hsla(30, 10%, 8%, 1);
+  --tab-active-text: hsla(0, 0%, 100%, 1);
+
+  // table
+  --tbl-head: hsla(0, 0%, 96%, 1);
+  --tbl-head-text: hsla(205, 16%, 38%, 1);
+  --tbl-body: hsla(0, 0%, 100%, 1);
+  --tbl-body-text: hsla(0, 0%, 0%, 1);
+  --tbl-border: hsla(0, 0%, 96%, 1);
+
+  // stopwatch
+  --stopwatch-bg: hsla(250, 95%, 69%, 1);
+  --stopwatch-lbl: hsla(0, 0%, 100%, 1);
+  --stopwatch-slug: hsla(0, 0%, 100%, 1);
+
+  // Accordion
+  --accordion: hsla(225, 100%, 19%, 1);
+  --accordion-title: hsla(0, 0%, 96%, 1);
+  --accordion-chevron: hsla(0, 0%, 96%, 1);
+
+  // header
+  --header-bg: hsla(38, 34%, 59%, 1);
+
+  // notification
+  --nofication-bg: hsla(30, 10%, 8%, 1);
+  --notification-stroke: hsla(0, 0%, 54%, 1);
+  --notification-text: hsla(0, 0%, 100%, 1);
+  --notification-icon: hsla(0, 0%, 100%, 1);
+
+  // input
+  --input-bg: hsla(0, 0%, 91%, 1);
+  --input-outline: hsla(0, 0%, 91%, 1);
+  --input-text: hsla(0, 0%, 0%, 1);
+  --input-lbl: hsla(0, 0%, 0%, 1);
+  --char-limit: hsla(205, 16%, 38%, 1);
+
+  //Radio Btn
+  --radio-label: hsla(46, 68%, 51%, 1);
+  --radio-checked: hsla(46, 68%, 51%, 1);
+  --radio-unchecked: hsla(46, 68%, 51%, 1);
+  //Check-Box Btn
+
+  --main-bg: hsla(235, 100%, 12%, 1);
+}

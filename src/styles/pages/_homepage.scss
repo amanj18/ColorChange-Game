@@ -1,0 +1,281 @@
+@use '../config' as *;
+
+.si-heroBanner {
+  &__wrap {
+    margin-left: calc(var(--gutter-space) * -4);
+    margin-right: calc(var(--gutter-space) * -4);
+    background-color: var(--neutral-1);
+    &.si-welcome {
+      .si-heroBanner {
+        &__grid {
+          --herobanner-bg: url(../assets/images/herobanner/welcome-bottom.png?v=#{$image-version})
+              no-repeat bottom center/70rem,
+            url(../assets/images/herobanner/welcome-top.png?v=#{$image-version}) no-repeat top
+              center/60rem,
+            url(../assets/images/herobanner/default-herobanner-bg.png?v=#{$image-version}) no-repeat
+              center center/cover;
+          @media screen and (min-width: $media-mobile-min) {
+            --herobanner-bg: url(../assets/images/herobanner/welcome-bottom.png?v=#{$image-version})
+                no-repeat bottom center/contain,
+              url(../assets/images/herobanner/welcome-top.png?v=#{$image-version}) no-repeat top
+                center/contain,
+              url(../assets/images/herobanner/default-herobanner-bg.png?v=#{$image-version})
+                no-repeat center center/cover;
+          }
+        }
+        &__thumb {
+          aspect-ratio: 16/9;
+          margin-top: calc(var(--gutter-space) * 20);
+          @include setProperty(max-width, 600);
+          @media screen and (min-width: $media-mobile-min) {
+            aspect-ratio: 1/1;
+          }
+        }
+        &__content {
+        }
+        &__cta {
+          @include setProperty(min-height, 80);
+          @media screen and (min-width: $media-mobile-min) {
+            min-height: auto;
+          }
+        }
+      }
+    }
+    &.si-federation {
+      .si-heroBanner {
+        &__thumb {
+          flex-grow: 1;
+          aspect-ratio: 16/9;
+          margin-top: calc(var(--gutter-space) * 30);
+          @media screen and (min-width: $media-mobile-min) {
+            margin-top: 0;
+            justify-content: flex-end;
+          }
+          img {
+            position: relative;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+            border: var(--border-1) solid var(--primary-2);
+            @include setProperty(max-width, 300);
+            @include setProperty(border-top-left-radius, 24);
+            @include setProperty(border-bottom-right-radius, 24);
+            @media screen and (min-width: $media-mobile-min) {
+              border-width: var(--border-2);
+              @include setProperty(border-top-left-radius, 48);
+              @include setProperty(border-bottom-right-radius, 48);
+            }
+          }
+        }
+      }
+    }
+    &.si-thankYou {
+      .si-heroBanner {
+        &__grid {
+          --herobanner-bg: url(../assets/images/herobanner/hb-thankyou-bg-mob.png?v=#{$image-version})
+            no-repeat center center/cover;
+          @media screen and (min-width: $media-mobile-min) {
+            --herobanner-bg: url(../assets/images/herobanner/hb-thankyou-bg.png?v=#{$image-version})
+              no-repeat center center/cover;
+          }
+        }
+        &__thumb {
+          flex-shrink: unset;
+          aspect-ratio: 1/1;
+          img {
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+    }
+    &.si-winner {
+      .si-heroBanner {
+        &__grid {
+          padding: calc(var(--gutter-space) * 4);
+          --herobanner-bg: url(../assets/images/herobanner/hb-winner-bg.png?v=#{$image-version})
+            no-repeat center center/cover;
+        }
+        &__content {
+          text-align: center;
+        }
+      }
+    }
+  }
+  &__grid {
+    background: var(--herobanner-bg);
+    width: 100%;
+    aspect-ratio: 16/9;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @extend %flexbox !optional;
+    @media screen and (min-width: $media-mobile-min) {
+      flex-direction: row;
+    }
+  }
+  &__thumb {
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+  &__logo {
+    @include setProperty(max-width, 300);
+    width: 100%;
+    margin: 0 auto;
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+  &__content {
+    margin: 0 auto;
+    max-width: var(--screen-mob);
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    padding: calc(var(--gutter-space) * 4);
+    padding-bottom: 0;
+    @media screen and (min-width: $media-mobile-min) {
+      text-align: left;
+    }
+  }
+  &__heading {
+    text-transform: uppercase;
+    margin-bottom: calc(var(--gutter-space) * 2);
+    color: var(--neutral-2);
+    @extend %si-regularFF-sec !optional;
+    @include setProperty(font-size, 24);
+    @media screen and (min-width: $media-mobile-min) {
+      @include setProperty(font-size, 40);
+    }
+    em {
+      display: block;
+      @include setProperty(font-size, 18);
+      @media screen and (min-width: $media-mobile-min) {
+        @include setProperty(font-size, 32);
+      }
+    }
+  }
+  &__caption {
+    color: var(--neutral-2);
+    @include setProperty(font-size, 12);
+    @extend %si-regularFF !optional;
+    @media screen and (min-width: $media-mobile-min) {
+      @include setProperty(font-size, 14);
+    }
+  }
+  &__date {
+    color: var(--neutral-2);
+    @include setProperty(font-size, 14);
+    @extend %si-boldFF !optional;
+    @media screen and (min-width: $media-mobile-min) {
+      @include setProperty(font-size, 16);
+    }
+  }
+  &__cta {
+    margin-top: calc(var(--gutter-space) * 8);
+    gap: calc(var(--gutter-space) * 4);
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    @media screen and (min-width: $media-mobile-min) {
+      justify-content: flex-start;
+    }
+    .si-btn {
+      flex-basis: calc(100% / 2);
+      @media screen and (min-width: $media-mobile-min) {
+        flex-basis: auto;
+      }
+    }
+  }
+  &__card {
+    gap: calc(var(--gutter-space) * 2) calc(var(--gutter-space) * 4);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    @extend %gridbox !optional;
+    @media screen and (min-width: $media-mobile-min) {
+      gap: calc(var(--gutter-space) * 8) calc(var(--gutter-space) * 10);
+    }
+    &-item {
+      gap: calc(var(--gutter-space) * 2);
+      align-items: start;
+      @extend %gridbox !optional;
+      @media screen and (min-width: $media-mobile-min) {
+        gap: calc(var(--gutter-space) * 4);
+      }
+    }
+    &-title {
+      padding: var(--gutter-space) calc(var(--gutter-space) * 2);
+      border-left: calc(var(--border-1) * 2) solid var(--primary-3);
+      color: var(--neutral-2);
+      @include setProperty(font-size, 12);
+      @extend %si-mediumFF !optional;
+      @media screen and (min-width: $media-mobile-min) {
+        border-left-width: calc(var(--border-1) * 4);
+        padding: calc(var(--gutter-space) * 2) calc(var(--gutter-space) * 4);
+        @include setProperty(font-size, 18);
+      }
+    }
+    &-thumb {
+      background: linear-gradient(
+        90deg,
+        #b68625 -1.76%,
+        #f0d49a 13.24%,
+        #d0a536 27.24%,
+        #b18121 41.24%,
+        #e7c787 55.24%,
+        #e5bf45 75.24%,
+        #7d4900 98.24%
+      );
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      justify-content: center;
+      align-items: center;
+      @extend %flexbox !optional;
+      @include border-radius(setUnit(4));
+      @media screen and (min-width: $media-mobile-min) {
+        @include border-radius(setUnit(12));
+      }
+
+      &::after {
+        content: '';
+        width: 20%;
+        aspect-ratio: 1/1;
+        position: absolute;
+        left: auto;
+        top: 0;
+        right: 0;
+        background: var(--ea-watername);
+      }
+      img {
+        width: calc(100% - var(--gutter-space) / 2);
+        display: block;
+        aspect-ratio: 16/9;
+        object-fit: contain;
+        object-position: center;
+        @include border-radius(setUnit(4));
+        @media screen and (min-width: $media-mobile-min) {
+          @include border-radius(setUnit(12));
+        }
+      }
+    }
+    &-caption {
+      text-align: right;
+      color: var(--neutral-2);
+      @include setProperty(font-size, 12);
+      @extend %si-regularFF-sec !optional;
+      @media screen and (min-width: $media-mobile-min) {
+        @include setProperty(font-size, 24);
+      }
+    }
+  }
+}

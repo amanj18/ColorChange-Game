@@ -1,0 +1,148 @@
+@use '../config' as *;
+
+// radio button
+.si-radioBtn {
+  word-break: break-all;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  @extend %flexbox !optional;
+  &.v2 {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    [type='radio'] {
+      &:checked,
+      &:not(:checked) {
+        & + label {
+          padding: var(--gutter-space);
+          height: 100%;
+          min-height: 150px;
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: column;
+          border: var(--border-1) solid var(--background-2);
+          @include transition(border 0.1s linear, background-color 0.1s linear);
+          &::after,
+          &::before {
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            top: auto;
+            bottom: var(--gutter-space);
+          }
+        }
+      }
+
+      &:checked {
+        & + label {
+          border: var(--border-1) solid var(--radio-checked);
+        }
+      }
+    }
+  }
+
+  [type='radio'] {
+    &:disabled + label {
+      @extend .si-disabled !optional;
+    }
+
+    &:checked,
+    &:not(:checked) {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      & + label {
+        border: var(--border-1) solid var(--background-2);
+        // text-transform: uppercase;
+        @include setProperty(font-size, 14);
+        @include setProperty(line-height, 16);
+        @include setProperty(min-height, 40);
+        width: 100%;
+        position: relative;
+        // padding-left: calc(var(--gutter-space) * 8);
+        cursor: pointer;
+        align-content: center;
+        // justify-content: center;
+        justify-content: flex-start;
+        align-items: center;
+        @extend %flexbox !optional;
+        @extend %si-borRad8 !optional;
+        @extend %si-boldFF !optional;
+
+        &::after,
+        &::before {
+          color: var(--radio-checked);
+          aspect-ratio: 1/1;
+          font-family: 'si-icon' !important;
+          position: absolute;
+          left: auto;
+          right: calc(var(--gutter-space) * 4);
+          top: 50%;
+          @include setProperty(width, 24);
+          @include setProperty(font-size, 30);
+          z-index: 1;
+          justify-content: center;
+          align-items: center;
+          @extend %flexbox !optional;
+          transform-origin: center center;
+          @include transition(all 0.2s ease);
+          transform: translateY(-50%);
+        }
+
+        &::before {
+          content: '\e90c';
+        }
+
+        &::after {
+          content: '\e90d';
+        }
+
+        a {
+          border-bottom: var(--border-1) solid var(--primary-1);
+          margin-left: calc(var(--gutter-space) * 2);
+          @include setProperty(font-size, 12);
+          @extend %si-mediumFF !optional;
+        }
+      }
+    }
+
+    &:checked {
+      & + label {
+        border: var(--border-1) solid var(--background-2);
+        color: var(--secondary-1);
+        @extend %si-borRad8 !optional;
+        &::after {
+          color: var(--radio-checked);
+        }
+      }
+    }
+
+    &:not(:checked) + label::after {
+      opacity: 0;
+    }
+
+    &:checked + label::after {
+      opacity: 1;
+    }
+
+    &:checked + label::before {
+      @include transition(all 0.2s ease);
+    }
+
+    &:disabled {
+      :checked + label::before,
+      :not(:checked) + label::before {
+        border-color: var(--disable);
+        background-color: var(--disable);
+      }
+    }
+  }
+
+  &:disabled:checked + label::after {
+    background: rgba(var(--disable-rgb), 0.2);
+  }
+}

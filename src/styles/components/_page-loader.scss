@@ -1,0 +1,37 @@
+@use '../config' as *;
+
+.si-pageLoader {
+  &__wrap {
+    z-index: 999999;
+    position: fixed;
+    width: 100%;
+    height: var(--window-inner-height);
+    top: 0;
+    left: 0;
+    background: hsla(var(--black-hsl), 0.9);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+  }
+  &__box {
+    display: grid;
+    gap: calc(var(--gutter-space) * 3);
+    justify-items: center;
+  }
+  &__spinner {
+    background: var(--loader-thumb);
+    width: 10rem;
+    // border: 0.2rem solid var(--secondary-1);
+    // border-left-color: transparent;
+    aspect-ratio: 1/1;
+    @extend %si-borRad100 !optional;
+    // @include animation("si-spin 1s both ease-in-out infinite");
+    // @include animation("si-pulse 2s both linear infinite");
+  }
+  &__text {
+    @include setProperty(font-size, 14);
+    color: var(--neutral-2);
+    @extend %si-regularFF !optional;
+  }
+}

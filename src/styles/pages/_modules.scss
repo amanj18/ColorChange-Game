@@ -1,0 +1,390 @@
+@use '../config' as *;
+.si-htp {
+  &__wrap {
+    padding-top: calc(var(--gutter-space) * 10);
+    padding-bottom: calc(var(--gutter-space) * 10);
+    background: var(--neutral-3);
+  }
+  &__heading {
+    text-align: center;
+    color: var(--neutral-2);
+    @include setProperty(font-size, 32);
+    @extend %si-regularFF-sec !optional;
+    @media screen and (min-width: $media-mobile-min) {
+      @include setProperty(font-size, 40);
+    }
+  }
+  &__swiper {
+    margin-top: calc(var(--gutter-space) * 10);
+    @media screen and (min-width: $media-mobile-min) {
+      margin-top: calc(var(--gutter-space) * (10 * 2));
+    }
+  }
+  &__box {
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    @extend %gridbox !optional;
+    &-thumbnail {
+      margin-bottom: calc(var(--gutter-space) * 8);
+      aspect-ratio: 1/1;
+      @include setProperty(width, 100);
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+    &-title {
+      margin-bottom: calc(var(--gutter-space) * 3);
+      color: var(--neutral-2);
+      @include setProperty(font-size, 24);
+      @extend %si-regularFF-sec !optional;
+    }
+    &-description {
+      color: var(--neutral-2);
+      @include setProperty(font-size, 14);
+      @extend %si-regularFF !optional;
+    }
+  }
+}
+
+.si-voting {
+  &__wrap {
+    min-height: calc(var(--window-inner-height) - var(--client-header));
+    background: var(--neutral-5);
+    grid-template-rows: auto 1fr auto;
+    @extend %gridbox !optional;
+  }
+  &-heading {
+    padding: calc(var(--gutter-space) * 4) 0;
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    @extend %si-regularFF-sec !optional;
+    @include setProperty(font-size, 20);
+    @media screen and (min-width: $media-mobile-min) {
+      padding: calc(var(--gutter-space) * 5) 0;
+      @include setProperty(font-size, 32);
+    }
+  }
+  &__head {
+  }
+
+  &__body {
+    padding-top: calc(var(--gutter-space) * 2);
+    padding-bottom: calc(var(--gutter-space) * 2);
+    background: var(--voting-body-bg);
+    @media screen and (min-width: $media-mobile-min) {
+      padding-top: calc(var(--gutter-space) * 10);
+      padding-bottom: calc(var(--gutter-space) * 10);
+    }
+  }
+  &__footer {
+    padding: calc(var(--gutter-space) * 3) 0;
+    background: var(--neutral-3);
+    align-self: flex-end;
+    &-grid {
+      margin: 0 auto;
+      max-width: var(--screen-tab);
+      width: 100%;
+      gap: calc(var(--gutter-space) * 2);
+      justify-content: space-between;
+      align-items: center;
+      @extend %flexbox !optional;
+    }
+    &-pagination {
+      ul {
+        gap: calc(var(--gutter-space) * 2);
+        justify-content: flex-start;
+        align-items: center;
+        @extend %flexbox !optional;
+        @media screen and (min-width: $media-mobile-min) {
+          gap: calc(var(--gutter-space) * 4);
+        }
+        li {
+          color: var(--neutral-2);
+          aspect-ratio: 1/1;
+          background: var(--neutral-7);
+          flex-shrink: 0;
+          justify-content: center;
+          align-items: center;
+          @extend %flexbox !optional;
+          @extend %si-regularFF-sec !optional;
+          @extend %si-borRad100 !optional;
+          @include setProperty(font-size, 18);
+          @include setProperty(width, 32);
+          &:where(.si-active) {
+            border: var(--border-1) solid var(--neutral-2);
+            background: var(--primary-1);
+          }
+          &:where(.si-picked) {
+            cursor: pointer;
+            background: var(--primary-3);
+            color: var(--neutral-1);
+          }
+          &:not(.si-active, .si-picked) {
+            pointer-events: none;
+          }
+          &:not(.si-active) {
+            transform-origin: left;
+            @include transition(transform 0.2s linear, background-color 0.2s linear);
+            @include transform(scale(0.8));
+          }
+        }
+      }
+    }
+    &-cta {
+    }
+  }
+  &__list {
+    margin-top: calc(var(--gutter-space) * 10);
+    ul {
+      gap: calc(var(--gutter-space) * 3);
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      @extend %flexbox !optional;
+      @media screen and (min-width: $media-mobile-min) {
+        gap: calc(var(--gutter-space) * 4);
+      }
+      li {
+        @media screen and (min-width: $media-mobile-min) {
+          width: calc(100% / 2 - calc(var(--gutter-space) * 2));
+          flex-basis: calc(100% / 2 - calc(var(--gutter-space) * 2));
+          flex-shrink: 0;
+        }
+      }
+    }
+    &-grid {
+      margin: 0 auto;
+      max-width: var(--screen-tab);
+      width: 100%;
+    }
+    &-heading {
+      text-align: center;
+      color: var(--neutral-3);
+      @include setProperty(font-size, 32);
+      @extend %si-regularFF-sec !optional;
+    }
+  }
+}
+.si-summary {
+  &__wrap {
+    .si-voting {
+      &__list {
+        &-heading {
+          text-align: left;
+          @include setProperty(font-size, 20);
+        }
+      }
+      &__body {
+      }
+      &__footer {
+        &-cta {
+          gap: calc(var(--gutter-space) * 4);
+          justify-content: center;
+          align-items: center;
+          @extend %flexbox !optional;
+          .si-btn {
+            width: 100%;
+            @include setProperty(max-width, 240);
+          }
+        }
+      }
+    }
+    .si-teamDetail {
+      width: auto;
+    }
+  }
+  &__list {
+    ul {
+      li {
+        padding: calc(var(--gutter-space) * 4) calc(var(--gutter-space) * 2);
+        gap: calc(var(--gutter-space) * 2);
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        @extend %flexbox !optional;
+        @media screen and (min-width: $media-mobile-min) {
+          padding: calc(var(--gutter-space) * 8) calc(var(--gutter-space) * 4);
+          align-items: center;
+          flex-direction: row;
+        }
+        &:not(:last-child) {
+          border-bottom: var(--border-1) solid var(--neutral-5);
+        }
+      }
+    }
+  }
+}
+.si-teamDetail {
+  width: 100%;
+  background: var(--neutral-2);
+  border: var(--border-1) solid var(--neutral-5);
+  padding: calc(var(--gutter-space) / 2);
+  gap: calc(var(--gutter-space) * 3);
+  justify-content: flex-start;
+  align-items: center;
+  @extend %flexbox !optional;
+  @extend %si-borRad100 !optional;
+  @extend %si-buttonReset !optional;
+  &.si-selected {
+    background: var(--gradient-1);
+    border-color: var(--primary-2);
+  }
+  &.si-picked {
+    border-color: var(--primary-2);
+    background: var(--neutral-7);
+  }
+  &-name {
+    padding-right: calc(var(--gutter-space) * 4);
+    color: var(--neutral-3);
+    @include setProperty(font-size, 12);
+    @extend %si-regularFF-sec !optional;
+    @media screen and (min-width: $media-mobile-min) {
+      @include setProperty(font-size, 16);
+    }
+  }
+  &-flag {
+    flex-shrink: 0;
+    background-color: var(--neutral-1);
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    @extend %si-borRad100 !optional;
+    @include setProperty(width, 36);
+    @include setProperty(height, 36);
+    @media screen and (min-width: $media-mobile-min) {
+      @include setProperty(width, 48);
+      @include setProperty(height, 48);
+    }
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+.si-teamInfo {
+  width: 100%;
+  gap: calc(var(--gutter-space) * 2);
+  justify-content: flex-start;
+  align-items: center;
+  @extend %flexbox !optional;
+
+  &-name {
+    color: var(--neutral-3);
+    @include setProperty(font-size, 14);
+    @extend %si-regularFF !optional;
+  }
+  &-flag {
+    border: var(--border-1) solid var(--background-2);
+    background-color: var(--neutral-1);
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    @extend %si-borRad2 !optional;
+    @include setProperty(width, 36);
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.si-social {
+  &Share {
+    gap: calc(var(--gutter-space) * 4);
+    justify-content: center;
+    align-items: center;
+    @extend %gridbox !optional;
+    &__title {
+      text-align: center;
+      color: var(--neutral-1);
+      @include setProperty(font-size, 12);
+      @extend %si-mediumFF !optional;
+    }
+    &__icons {
+      gap: calc(var(--gutter-space) * 2);
+      justify-content: center;
+      align-items: center;
+      @extend %flexbox !optional;
+    }
+  }
+  &RadioBox {
+    gap: calc(var(--gutter-space) * 4);
+    justify-content: center;
+    align-items: center;
+    @extend %gridbox !optional;
+    &__title {
+      text-align: center;
+      color: var(--neutral-1);
+      @include setProperty(font-size, 12);
+      @extend %si-mediumFF !optional;
+    }
+    &__content {
+      gap: calc(var(--gutter-space) * 6);
+      justify-content: center;
+      align-items: flex-start;
+      @extend %flexbox !optional;
+      .si-radioBtn {
+        width: 100%;
+      }
+    }
+  }
+  &Graphic {
+    &__thumb {
+      img {
+        aspect-ratio: 1/1;
+        width: 100%;
+      }
+    }
+  }
+  &__icon {
+    border: var(--border-1) solid var(--neutral-5);
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px !important;
+    @extend %flexbox !optional;
+    @include setProperty(width, 40);
+    @include setProperty(height, 40);
+    @include setProperty(font-size, 20);
+    &.si-facebook {
+      color: var(--facebook);
+    }
+    &.si-twitter {
+      color: var(--twitter);
+    }
+    &.si-instagram {
+      color: var(--instagram);
+    }
+    &.si-whatsapp {
+      color: var(--whatsApp);
+    }
+    &.si-download {
+      color: var(--download);
+    }
+  }
+}
+
+.si-media {
+  &__form {
+    gap: calc(var(--gutter-space) * 4);
+    @extend %gridbox !optional;
+  }
+}

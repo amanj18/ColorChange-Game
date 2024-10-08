@@ -1,0 +1,87 @@
+@use '../config/mixins' as *;
+$image-version: '0.1';
+$full-space: setUnit(16);
+$half-space: setUnit(8);
+$menu-height: setUnit(50);
+$cta-height: setUnit(40);
+$input-height: setUnit(40);
+$gutter-space: setUnit(4);
+$border-1: setUnit(1);
+$border-2: setUnit(2);
+$grid-width: setUnit(300);
+$client-header: setUnit(80);
+
+:root {
+  // for rem/px dependence  on --base-font-size
+  --base-font-size: 62.5%;
+  // --base-font-size: 16px;
+  --vh: 1vh;
+  --window-inner-height: calc(var(--vh, 1vh) * 100);
+  --full-space: #{$full-space};
+  --half-space: #{$half-space};
+  --full-space-negative: calc(var(--full-space) * -1);
+  --half-space-negative: calc(var(--half-space) * -1);
+  --cta-height-xs: calc(#{$cta-height}/ 2);
+  --cta-height: #{$cta-height};
+  --gutter-space: #{$gutter-space};
+  --menu-height: #{$menu-height};
+  --input-height: #{$input-height};
+  --border-1: #{$border-1};
+  --border-2: #{$border-2};
+  --grid-width: #{$grid-width};
+  --client-header: #{$client-header};
+  // container width
+  --screen-mob-xs: 375px;
+  --screen-mob: 576px;
+  --screen-tab: 768px;
+  --screen-lap: 984px;
+  --screen-desk: 1320px;
+
+  // Base64 Img
+  --select-box-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACZSURBVHgB7Y0xCgIxEEUnKxHcGBIkgTQucwSv4Em8ikfwCHqS2Fp6ArfcchYhTYqYgEUKFfvdB8PMfObPB5j5yqJerO0eQigKYbzXutYOpdx4Ida3EJ5D0Zr6ICW45HbODw61ifOlL3OMvP+YmJOubasYY3CSUo2cr4a3iWJs9kQ9wS+M6Y45NZUyZuu1Rg3/4hyitbiDCfMCHFoncsdK4HgAAAAASUVORK5CYII=');
+
+  // Images/Patterns
+  --herobanner-bg: url(../assets/images/herobanner/herobanner-bg.jpg?v=#{$image-version}) no-repeat
+    center center/cover;
+  --voting-body-bg: url(../assets/images/voting-body-bg.png?v=#{$image-version}) no-repeat center
+      center/cover,
+    var(--neutral-2);
+  --ea-watername: url(../assets/images/ea-icon.png?v=#{$image-version}) no-repeat top right/contain;
+}
+
+// mobile ex-small
+$media-mobile-ex-sm-min: 320px;
+$media-mobile-ex-sm-max: 321.98px;
+
+// mobile small
+$media-mobile-sm-min: 375px;
+$media-mobile-sm-max: 374.98px;
+
+// mobile
+$media-mobile-min: 576px;
+$media-mobile-max: 575.98px;
+
+// tablets
+$media-tablets-min: 768px;
+$media-tablets-max: 767.98px;
+
+// desktop
+$media-desktop-min: 992px;
+$media-desktop-max: 991.98px;
+
+// lg-desktop
+$media-lg-desktop-min: 1200px;
+$media-lg-desktop-max: 1199.98px;
+
+// extra lg-desktop
+$media-xlg-desktop-min: 1400px;
+$media-xlg-desktop-max: 1399.98px;
+
+@media screen and (min-width: $media-mobile-min) {
+  :root {
+  }
+}
+@media screen and (min-width: $media-desktop-min) {
+  :root {
+  }
+}

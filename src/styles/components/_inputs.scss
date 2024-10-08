@@ -1,0 +1,240 @@
+@use '../config' as *;
+
+//Form Input
+.si-form {
+  margin-bottom: calc(var(--gutter-space) * 4);
+  position: relative;
+}
+.si-input {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  &:valid,
+  &.si-valid {
+    .si-input__field {
+      input {
+        border-color: var(--ascent-success);
+      }
+    }
+    .si-errMsg {
+      color: var(--ascent-success);
+    }
+  }
+  &:invalid,
+  &.si-invalid {
+    .si-input__field {
+      input {
+        border-color: var(--ascent-error);
+      }
+    }
+  }
+  &--edit,
+  &--pwd,
+  &--clear,
+  &--search {
+    position: relative;
+    .si-input--icon {
+      justify-content: center;
+      align-items: center;
+      @extend %flexbox !optional;
+      &::after {
+        font-family: 'afci' !important;
+        justify-content: center;
+        align-items: center;
+        @extend %flexbox !optional;
+      }
+    }
+  }
+  &--clear,
+  &--search {
+    input {
+      background: var(--ascent-error);
+      color: var(--neutral-2);
+      &::placeholder {
+        color: var(--neutral-2);
+      }
+      .si-input--icon::after {
+        color: var(--neutral-2);
+      }
+    }
+  }
+  &--pwd {
+    .si-input--icon {
+      &::after {
+        content: '\e906';
+      }
+
+      &-active {
+        &::after {
+          content: '\e917';
+        }
+      }
+    }
+  }
+
+  &--clear {
+    .si-input--icon {
+      &::after {
+        color: var(--neutral-3);
+        content: '\e908';
+      }
+    }
+  }
+
+  &--search,
+  &--edit {
+    &::after {
+      font-family: 'afci' !important;
+      aspect-ratio: 1/1;
+      height: 100%;
+      position: absolute;
+      left: auto;
+      right: 0;
+      // font-size: 12px;
+      top: 50%;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      @extend %flexbox !optional;
+      @include transform(translateY(-50%));
+    }
+  }
+
+  &--search {
+    input {
+      // padding-left: 40px;
+    }
+
+    &::after {
+      content: '\e920';
+      color: var(--neutral-1);
+    }
+  }
+
+  &--edit {
+    input {
+      // padding-left: 40px;
+    }
+    .si-input--icon {
+      &::after {
+        content: '\e90c';
+        color: var(--primary-2);
+      }
+    }
+  }
+
+  &--icon {
+    cursor: pointer;
+    position: absolute;
+    left: auto;
+    right: 0;
+    height: 100%;
+    width: 35px;
+    top: 0;
+  }
+
+  &--success {
+    input {
+      border-color: var(--accent-success) !important;
+    }
+  }
+
+  &--danger {
+    input {
+      color: var(--accent-error);
+      border-color: var(--accent-error) !important;
+    }
+  }
+  &__control {
+    margin-bottom: var(--full-space);
+  }
+  &__field {
+    overflow: hidden;
+    position: relative;
+  }
+  &__icon {
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 0;
+    .si-btn {
+      background: transparent;
+    }
+  }
+  &--error {
+    color: var(--ascent-error);
+    @include setProperty(font-size, 12);
+    padding: var(--gutter-space) calc(var(--gutter-space) * 3) 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  input,
+  textarea {
+    box-shadow: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: calc(var(--gutter-space) * 2);
+    padding-left: calc(var(--gutter-space) * 4);
+    height: var(--input-height);
+    width: 100%;
+    display: block;
+    color: var(--input-text);
+    background: var(--input-bg);
+    border: var(--border-1) solid var(--input-outline);
+    @extend %si-borRad6 !optional;
+    @extend %si-regularFF !optional;
+    @include transition(border 0.1s linear);
+    @include setProperty(font-size, 12);
+    &::placeholder {
+      font-family: var(--regular-ff);
+      font-style: italic;
+      color: var(--neutral-3);
+      @include setProperty(font-size, 12);
+    }
+  }
+  textarea {
+    height: auto;
+    resize: none;
+  }
+  select {
+    cursor: pointer;
+    padding: calc(var(--gutter-space) * 2) calc(var(--gutter-space) * 4);
+    display: block;
+    height: var(--input-height);
+    width: 100%;
+    color: var(--primary-3);
+    background-color: var(--neutral-2);
+    border: var(--border-1) solid var(--neutral-1);
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: var(--select-box-icon);
+    background-position: 96%;
+    background-repeat: no-repeat;
+    @extend %si-regularFF !optional;
+
+    option {
+      color: var(--neutral-3);
+      font: -moz-pull-down-menu;
+      @extend %si-regularFF !optional;
+      padding: calc(var(--gutter-space) * 2) calc(var(--gutter-space) * 4);
+      background: var(--neutral-6);
+    }
+  }
+  &--col {
+    display: flex;
+    justify-content: space-between;
+    .si-lbl {
+      align-items: center;
+      flex-direction: row-reverse;
+      padding: 0;
+      .si-tooltip__icon {
+        margin: 0;
+      }
+    }
+    .si-tooltip__box {
+      left: calc(100% + 10px);
+    }
+  }
+}

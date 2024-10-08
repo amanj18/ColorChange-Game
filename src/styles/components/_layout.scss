@@ -1,0 +1,28 @@
+@use '../config' as *;
+
+.si-row {
+  width: 100%;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  @extend %gridbox !optional;
+}
+
+$cell-width: 10;
+@for $i from 1 through $cell-width {
+  .si-table__cell--#{$i} {
+    width: $i * 10%;
+  }
+}
+$col-num: 12;
+@for $i from 1 through $col-num {
+  .si-col-#{$i} {
+    grid-column: auto/span $i;
+  }
+}
+
+$col-start: 11;
+@for $i from 1 through $col-start {
+  .si-col-start-#{$i} {
+    grid-column-start: $i;
+  }
+}

@@ -1,0 +1,36 @@
+@use '../config' as *;
+
+.si-menu {
+  align-self: stretch;
+  ul {
+    overflow-x: auto;
+    height: 100%;
+    background: var(--nav-bg);
+    justify-content: flex-start;
+    align-items: flex-start;
+    @extend %flexbox !optional;
+    li {
+      height: 100%;
+      padding: 0;
+      @include setProperty(font-size, 20);
+      a {
+        text-transform: uppercase;
+        white-space: nowrap;
+        position: relative;
+        height: var(--menu-height);
+        padding: 0 calc(var(--gutter-space) * 5);
+        color: var(--nav-text);
+        justify-content: center;
+        align-items: center;
+        @extend %flexbox !optional;
+        @extend %si-regularFF-sec !optional;
+        @include transition(background-color 0.1s linear);
+        &.active {
+          @extend %si-regularFF-sec !optional;
+          background: var(--nav-active-bg);
+          color: var(--nav-active-text);
+        }
+      }
+    }
+  }
+}

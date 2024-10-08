@@ -1,0 +1,45 @@
+@use '../config' as *;
+.si-form {
+  &__group {
+    width: 100%;
+    overflow: hidden;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @extend %flexbox !optional;
+    @extend %si-borRad4 !optional;
+    .si-btn {
+      isolation: isolate;
+      width: auto;
+    }
+  }
+  &__control {
+    // &:not(:last-of-type) {
+    //   margin-bottom: 1.4rem;
+    // }
+  }
+}
+
+// validation
+.si-errMsg {
+  @include setProperty(font-size, 10);
+  margin-top: calc(var(--gutter-space) * 2);
+  color: var(--accent-error);
+  @extend %si-mediumFF !optional;
+  @include animation('si-pulse .3s linear');
+}
+
+//Form lable
+.si-lbl {
+  padding: calc(var(--gutter-space) * 2) calc(var(--gutter-space) * 4);
+  color: var(--input-lbl);
+  justify-content: space-between;
+  align-items: baseline;
+  @extend %flexbox !optional;
+  @extend %si-mediumFF !optional;
+  @include setProperty(font-size, 12);
+  span {
+    gap: var(--gutter-space);
+    justify-content: flex-start;
+    @extend %flexbox !optional;
+  }
+}

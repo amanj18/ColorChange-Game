@@ -1,0 +1,131 @@
+@use '../config' as *;
+
+.si-tabs {
+  &__wrap {
+    // background-color: var(--tab-bg);
+    overflow: hidden;
+
+    ul {
+      border: var(--border-1) solid var(--tab-active);
+      background-color: var(--tab-bg);
+      width: 100%;
+      overflow: hidden;
+      justify-content: flex-start;
+      align-items: stretch;
+      @extend %flexbox !optional;
+      @extend %si-borRad4 !optional;
+      li {
+        position: relative;
+        min-height: 100%;
+        height: 100%;
+        color: var(--tab-text);
+        font-size: 1.4rem;
+        white-space: nowrap;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        gap: calc(var(--gutter-space) * 2);
+        @extend %flexbox !optional;
+        @extend %si-regularFF-sec !optional;
+        &:not(:last-child) {
+          button,
+          a {
+            &::after {
+              content: '';
+              position: absolute;
+              left: auto;
+              top: 50%;
+              right: 0;
+              bottom: 0;
+              width: var(--border-1);
+              height: calc(100% - 40%);
+              background: var(--tab-border);
+              @include transform(translateY(-50%));
+            }
+            &.si-active {
+              &::after {
+                display: none;
+              }
+            }
+          }
+        }
+        &.si-active {
+          pointer-events: none;
+          color: var(--tab-active-text);
+          &::after {
+            display: none;
+          }
+        }
+        em {
+          font-size: 1rem;
+          @extend %si-regularFF-sec !optional;
+        }
+
+        button {
+          @extend %si-buttonReset !optional;
+        }
+
+        button,
+        a {
+          text-transform: uppercase;
+          padding: calc(var(--gutter-space) * 2);
+          position: relative;
+          height: var(--cta-height);
+          color: var(--tab-text);
+          @include setProperty(font-size, 14);
+          white-space: nowrap;
+          box-shadow: none;
+          border: none;
+          background: transparent;
+          width: 100%;
+          text-align: center;
+          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+          gap: var(--gutter-space);
+          @extend %flexbox !optional;
+          @extend %si-regularFF-sec !optional;
+
+          &.si-active {
+            background: var(--tab-active-bg);
+            pointer-events: none;
+            color: var(--tab-active-text);
+          }
+          em {
+            @include setProperty(font-size, 10);
+          }
+        }
+      }
+    }
+  }
+  &__item {
+    padding: calc(var(--gutter-space) * 4);
+    width: 100%;
+    @include setProperty(font-size, 12);
+    color: var(--tab-text);
+    text-align: center;
+    border-bottom: calc(var(--border-2) * 2) solid transparent;
+    gap: var(--gutter-space);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    @extend %si-regularFF-sec !optional;
+    @extend %si-buttonReset !optional;
+    em {
+      @include setProperty(font-size, 16);
+      display: block;
+      @extend %si-regularFF-sec !optional;
+    }
+
+    &.si-active {
+      color: var(--tab-active);
+      border-bottom-color: var(--tab-active);
+    }
+  }
+}

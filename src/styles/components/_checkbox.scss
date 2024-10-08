@@ -1,0 +1,114 @@
+@use '../config' as *;
+//Checkbox button
+.si-checkBox {
+  position: relative;
+  @include setProperty(min-height, 40);
+  align-items: center;
+  word-break: break-all;
+  border-bottom: var(--border-1) solid var(--neutral-7);
+  @extend %gridbox !optional;
+  label {
+    &::before {
+    }
+  }
+  [type='checkbox'] {
+    &:disabled + label {
+      @extend .si-disabled !optional;
+    }
+    &:checked,
+    &:not(:checked) {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 11;
+      cursor: pointer;
+
+      & + label {
+        position: relative;
+        // padding-left: calc(1.6rem * 2.1);
+        cursor: pointer;
+        line-height: 1;
+        display: block;
+        color: var(--neutral-7);
+        @extend %si-boldFF !optional;
+
+        &::after,
+        &::before {
+          font-family: 'fgi' !important;
+          border: var(--border-1) solid var(--neutral-6);
+          border-radius: 4px;
+          position: absolute;
+          left: auto;
+          right: 0;
+          top: calc(var(--gutter-space) / -2);
+          // top: 50%;
+          @include setProperty(width, 20);
+          @include setProperty(height, 20);
+          z-index: 1;
+          justify-content: center;
+          align-items: center;
+          @extend %flexbox !optional;
+          transform-origin: center center;
+          // transform: translateY(-50%);
+          @include transition(all 0.2s ease);
+        }
+
+        &::before {
+          content: '';
+          // @include transform(translateY(-50%));
+        }
+
+        &::after {
+          content: '\e924';
+          color: var(--neutral-7);
+          background: var(--secondary-1);
+          border-color: var(--secondary-1);
+        }
+
+        a {
+          border-bottom: var(--border-1) solid var(--primary-1);
+          margin-left: calc(var(--gutter-space) * 2);
+
+          @include setProperty(font-size, 12);
+          color: var(--primary-1);
+          @extend %si-mediumFF !optional;
+        }
+      }
+    }
+
+    &:checked {
+      & + label {
+        color: var(--neutral-7);
+      }
+    }
+
+    &:not(:checked) + label::after {
+      opacity: 0;
+      @include transform(scale(0));
+    }
+
+    &:checked + label::after {
+      opacity: 1;
+      @include transform(scale(1));
+      // transform: scale(1) translateY(-50%);
+    }
+
+    &:checked + label::before {
+      @include transition(all 0.2s ease);
+    }
+
+    &:disabled {
+      :checked + label::before,
+      :not(:checked) + label::before {
+        border-color: var(--disable);
+        background-color: var(--disable);
+      }
+    }
+  }
+
+  &:disabled:checked + label::after {
+    background: rgba(var(--disable-rgb), 0.2);
+  }
+}

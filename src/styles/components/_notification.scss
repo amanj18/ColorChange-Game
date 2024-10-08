@@ -1,0 +1,68 @@
+@use '../config' as *;
+.si-notification {
+  background: var(--nofication-bg);
+  border: var(--border-1) solid var(--notification-stroke);
+  padding: calc(var(--gutter-space) * 2) calc(var(--gutter-space) * 4);
+  gap: calc(var(--gutter-space) * 2);
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: auto;
+  bottom: calc(var(--gutter-space) * 8);
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  max-width: max-content;
+  width: 100%;
+  margin: 0 auto;
+  @extend %flexbox !optional;
+  @extend %si-borRad100 !optional;
+  &.in {
+    z-index: 9999999;
+    @include opacity(1);
+    @include transition(opacity 0.1s linear, padding-top 0.1s linear);
+    @include animation('si-popInUp .15s both');
+  }
+  &.out {
+    pointer-events: none;
+    @include opacity(0);
+    @include transition(opacity 0.1s linear, padding-top 0.1s linear);
+    @include animation('si-popOutUp .15s both');
+  }
+  &__icon {
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    @include setProperty(width, 24);
+    @include setProperty(height, 24);
+    @extend %flexbox !optional;
+    @extend %si-borRad100 !optional;
+  }
+  &__icon {
+  }
+  &__content {
+  }
+  &__cta {
+    align-self: start;
+    .si-btn {
+      --cta-height: 24px;
+      color: var(--notification-icon);
+      justify-content: flex-end;
+      border-radius: 0 !important;
+    }
+  }
+  &.si-success {
+    --accent-success: var(--nofication-bg);
+    .si-notification__icon {
+      --accent-success: hsla(145, 75%, 41%, 1);
+      background: var(--accent-success);
+    }
+  }
+  &.si-danger {
+    --accent-danger: var(--nofication-bg);
+    .si-notification__icon {
+      --accent-danger: hsla(360, 81%, 58%, 1);
+      background: var(--accent-danger);
+    }
+  }
+}

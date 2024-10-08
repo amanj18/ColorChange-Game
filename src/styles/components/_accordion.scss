@@ -1,0 +1,89 @@
+@use '../config' as *;
+.si-accordion {
+  &__box {
+    border: var(--border-1) solid var(--secondary-3);
+    overflow: hidden;
+    background: var(--accordion);
+    @extend %si-borRad4 !optional;
+
+    &:not(:last-child) {
+      margin-bottom: calc(var(--gutter-space) * 4);
+    }
+  }
+
+  &__header {
+    color: var(--accordion-title);
+    @include setProperty(font-size, 16);
+    @extend %mediumFF !optional;
+  }
+
+  ul {
+    li {
+      overflow: hidden;
+      background-color: var(--white);
+      @extend %borRad4 !optional;
+
+      &:not(:last-child) {
+        margin-bottom: calc(var(--gutter-space) * 4);
+      }
+    }
+  }
+
+  button {
+    @extend %si-buttonReset !optional;
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+
+  &__trigger {
+    text-align: left;
+    background: var(--accordion) !important;
+    gap: calc(var(--gutter-space) * 2);
+    padding: calc(var(--gutter-space) * 2);
+    position: relative;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    @extend %flexbox !optional;
+
+    &[aria-expanded='true'] {
+      .si-accordion__icon {
+        @include transform(rotate(180deg));
+      }
+      ~ .si-accordion__body {
+        // border-top: 0.1rem dashed var(--accordion-title);
+      }
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: auto;
+    right: 0;
+    color: var(--accordion-title);
+    @include setProperty(width, 24);
+    @include setProperty(height, 24);
+    pointer-events: none;
+    flex-shrink: 0;
+    @include setProperty(font-size, 20);
+    justify-content: center;
+    align-items: center;
+    @extend %flexbox !optional;
+    @include transition(transform 0.1s linear);
+  }
+
+  &__body {
+    margin: 0;
+    background: var(--background-4);
+    // padding: calc(var(--gutter-space) * 4);
+
+    &[hidden] {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,156 @@
+@use "../config/mixins" as *;
+//popInUp
+@include keyframes(si-popInUp) {
+  0% {
+    @include opacity(0);
+    @include transform(translate(0%, 100%));
+  }
+
+  100% {
+    @include opacity(1);
+    transform-origin: 50% 0%;
+    @include transform(translate(0%, 0%));
+  }
+}
+
+//popOutUp
+@include keyframes(si-popOutUp) {
+  0% {
+    @include opacity(1);
+    @include transform(translate(0%, 0%));
+  }
+
+  100% {
+    @include opacity(0);
+    @include transform(translate(0%, 100%));
+  }
+}
+
+//fade
+@include keyframes(si-opacity) {
+  0% {
+    @include opacity(0.2);
+  }
+
+  100% {
+    @include opacity(1);
+  }
+}
+
+//Rotate
+@include keyframes(si-rotate) {
+  0% {
+    @include transform(rotateY(0deg));
+  }
+
+  100% {
+    @include transform(rotateY(360deg));
+  }
+}
+
+//Rotate Spin
+@include keyframes(si-spin) {
+  0% {
+    @include transform(rotate(0deg));
+  }
+
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+//toast
+@include keyframes(si-toast) {
+  0% {
+    @include transform(translateY(-100%));
+  }
+
+  100% {
+    @include transform(translateY(0%));
+  }
+}
+
+// si-zoomIn
+@include keyframes(si-zoomIn) {
+  from {
+    @include opacity(0);
+    @include transform(scale3d(0.3, 0.3, 0.3));
+  }
+
+  50% {
+    @include opacity(1);
+  }
+}
+
+// pulse
+@include keyframes(si-pulse) {
+  0% {
+    @include transform(scaleX(1));
+  }
+
+  50% {
+    @include transform(scale3d(1.17, 1.17, 1.17));
+  }
+
+  to {
+    @include transform(scaleX(1));
+  }
+}
+
+@keyframes flip {
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes flip-down {
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@include keyframes(loadingE) {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+//si-dropdownAnimi
+@include keyframes(si-dropdownAnimi) {
+  0% {
+    @include transform(translateY(100%));
+  }
+
+  100% {
+    @include transform(translateY(0%));
+  }
+}
+
+@include keyframes(si-slideInLeft) {
+  0% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+@include keyframes(si-slideOutLeft) {
+  0% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}

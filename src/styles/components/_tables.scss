@@ -1,0 +1,76 @@
+@use "../config" as *;
+
+.si-tbl {
+  table-layout: fixed;
+  display: table;
+  width: 100%;
+  overflow: hidden;
+  &__head,
+  &__body,
+  &__foot {
+    display: table-header-group;
+  }
+  &__head {
+    .si-tbl__row {
+      .si-tbl__cell {
+        &:first-child {
+          // border-radius: var(--gutter-space) 0 0 var(--gutter-space);
+        }
+        &:last-child {
+          // border-radius: 0 var(--gutter-space) var(--gutter-space) 0;
+        }
+      }
+    }
+    .si-tbl__cell {
+      @include setProperty(font-size, 12);
+      background: var(--tbl-head);
+      color: var(--tbl-head-text);
+      padding-top: calc(var(--gutter-space) * 2);
+      padding-bottom: calc(var(--gutter-space) * 2);
+      @extend %si-mediumFF !optional;
+    }
+  }
+  &__body {
+    .si-tbl__row {
+      &:not(:last-child) {
+        .si-tbl__cell {
+          border-bottom: var(--border-1) solid var(--tbl-border);
+        }
+      }
+    }
+    .si-tbl__cell {
+      background: var(--tbl-body);
+      color: var(--tbl-body-text);
+      @include setProperty(font-size, 12);
+      @extend %si-regularFF !optional;
+    }
+  }
+  &__row {
+    display: table-row;
+  }
+
+  &__cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding: calc(var(--gutter-space) * 2);
+  }
+
+  &__ctas {
+    gap: calc(var(--gutter-space) * 6);
+    justify-content: flex-end;
+    align-items: center;
+    @extend %flexbox !optional;
+    .si-btn__icon {
+      margin: 0;
+    }
+  }
+  &__loadMore {
+    padding: calc(var(--gutter-space) * 4);
+    background: var(--background-4);
+    justify-content: center;
+    @extend %flexbox !optional;
+    button {
+      margin: 0 auto;
+    }
+  }
+}

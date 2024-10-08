@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["src", "../reudxPersist/reduxPersist_index.js", "src/api/index.js"],
+  "exclude": ["node_modules", "build"]
+}

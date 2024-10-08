@@ -1,0 +1,23 @@
+// $font-detail: (
+//   'OpenSansLight': initial,
+//   'OpenSansRegular': initial,
+//   'OpenSansSemiBold': initial,
+//   'OpenSansBold': initial,
+//   'OpenSansExtraBold': initial,
+//   'tracksnormal': initial
+// );
+
+// @each $font-name, $font-weight in $font-detail {
+//   @font-face {
+//     font-family: #{$font-name};
+//     src: url('../assets/fonts/#{$font-name}.eot');
+//     src: url('../assets/fonts/#{$font-name}.eot?#iefix') format('embedded-opentype'),
+//       url('../assets/fonts/#{$font-name}.woff2') format('woff2'),
+//       url('../assets/fonts/#{$font-name}.woff') format('woff'),
+//       url('../assets/fonts/#{$font-name}.ttf') format('truetype'),
+//       url('../assets/fonts/#{$font-name}.svg#font') format('svg');
+//     font-weight: #{$font-weight};
+//     font-style: normal;
+//     font-display: swap;
+//   }
+// }
